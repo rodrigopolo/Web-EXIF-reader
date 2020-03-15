@@ -1,8 +1,11 @@
 # Web EXIF reader
 
-A simple HTML/Bootstrap/JavaScript A web-based EXIF reader for JPG and HEIC files.
+A simple web-based EXIF reader for JPG and HEIC files.
 
 [Demo](http://rodrigopolo.github.io/Web-EXIF-reader/)
+
+Based on [Exif-HEIC.js](https://github.com/exif-heic-js/exif-heic-js) and [Exif.js
+](https://github.com/exif-js/exif-js/blob/master/README.md) with [Bootstrap](https://github.com/twbs/bootstrap).
 
 -------
 
