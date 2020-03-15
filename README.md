@@ -1,4 +1,4 @@
-# Bandwidth Calc
+# Web EXIF reader
 
 A simple HTML/Bootstrap/JavaScript A web-based EXIF reader for JPG and HEIC files.
 
