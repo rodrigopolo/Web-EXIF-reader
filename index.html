@@ -1,45 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="Web EXIF reader (JPG/HEIC)">
-		<meta name="author" content="by Rodrigo Polo">
-		<title>Web EXIF reader (JPG/HEIC)</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<link href="css/offcanvas.css" rel="stylesheet">
+	<title>Web EXIF Reader - JPG &amp; HEIC Photo Metadata Viewer</title>
+	<meta name="title"                   content="Web EXIF Reader - JPG & HEIC Photo Metadata Viewer">
+	<meta name="description"             content="Free online EXIF metadata viewer for JPG and HEIC photos. Drag and drop images to view camera settings, GPS location, and capture date — all processed locally in your browser.">
+	<meta name="keywords"                content="exif reader, exif viewer, jpg metadata, heic metadata, photo metadata viewer, exif data online, gps exif viewer, camera exif data">
+	<meta name="author"                  content="rodrigopolo.com">
+	<meta name="robots"                  content="index, follow">
+	<link rel="canonical"                href="https://tools.rodrigopolo.com/exifreader">
+	<meta property="og:type"             content="website">
+	<meta property="og:url"              content="https://tools.rodrigopolo.com/exifreader">
+	<meta property="og:title"            content="Web EXIF Reader - JPG & HEIC Photo Metadata Viewer">
+	<meta property="og:description"      content="Free online EXIF metadata viewer for JPG and HEIC photos. Drag and drop images to view camera settings, GPS location, and capture date — all processed locally in your browser.">
+	<meta property="twitter:card"        content="summary">
+	<meta property="twitter:url"         content="https://tools.rodrigopolo.com/exifreader">
+	<meta property="twitter:title"       content="Web EXIF Reader - JPG & HEIC Photo Metadata Viewer">
+	<meta property="twitter:description" content="Free online EXIF metadata viewer for JPG and HEIC photos. Drag and drop images to view camera settings, GPS location, and capture date — all processed locally in your browser.">
 
-	</head>
-	<body class="bg-light">
-		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand mr-auto mr-lg-0" href="#">Web EXIF reader</a>
-		<button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-			<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link" href="https://rodrigopolo.com/contact/">Contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="https://github.com/exif-heic-js/exif-heic-js">Library</a></li>
-					<li class="nav-item"><a class="nav-link" href="https://getbootstrap.com/docs/4.4/examples/offcanvas/">Template</a></li>
-					<li class="nav-item"><a class="nav-link" href="https://github.com/rodrigopolo/Web-EXIF-reader">GitHub Repo</a></li>
-				</ul>
-			</div>
-		</nav>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebApplication",
+		"name": "Web EXIF Reader",
+		"applicationCategory": "PhotographyApplication",
+		"description": "View EXIF metadata embedded in JPG and HEIC photos — camera settings, GPS location, and capture date — directly in your browser.",
+		"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+		"operatingSystem": "Any",
+		"browserRequirements": "Requires JavaScript. Requires HTML5.",
+		"softwareVersion": "1.0"
+	}
+	</script>
+	<link rel="stylesheet" href="style.css">
+	<script src="../matomo.js"></script>
+</head>
+<body>
+<div class="container">
 
-		<main role="main" class="container">
-			<!-- Drop Zone -->
-			<div class="upload-drop-zone" id="drop-zone">Just drag and drop images here</div>
-			<div class="my-3 p-3 bg-white rounded shadow-sm" id="fl_cnt">
-				<h6 class="border-bottom border-gray pb-2 mb-0">Files</h6>
-				<div id="file_list"></div>
-			</div>
-		</main>
+	<header>
+		<div class="app-name">rodrigopolo.com — Utility</div>
+		<h1><strong>EXIF Reader</strong> — JPG / HEIC</h1>
+		<p class="subtitle">Drag and drop image files to extract embedded EXIF metadata — camera settings, GPS location, and capture date. Processed entirely in the browser, no data is uploaded to any server.</p>
+	</header>
 
-		<script src="//code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-		<script type="text/javascript" src="js/exif-heic.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+	<div class="upload-drop-zone" id="drop-zone" role="button" tabindex="0">Drag and drop images here, or click to browse</div>
+	<input type="file" id="file-input" multiple accept="image/jpeg,image/heic,image/heif,.jpg,.jpeg,.heic,.heif" hidden>
 
-	</body>
+	<div id="fl_cnt">
+		<div class="panel-title">Files</div>
+		<div id="file_list"></div>
+	</div>
+
+	<footer><a href="https://rodrigopolo.com">rodrigopolo.com</a></footer>
+
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/exifr@7/dist/full.umd.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
 </html>

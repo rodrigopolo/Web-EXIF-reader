@@ -1,11 +1,32 @@
 # Web EXIF reader
 
-A simple web-based EXIF reader for JPG and HEIC files.
+A simple, privacy-friendly web-based EXIF metadata viewer for JPG and HEIC/HEIF photos. Everything runs client-side — files are processed entirely in your browser and never uploaded to a server.
 
 [Demo](http://rodrigopolo.github.io/Web-EXIF-reader/)
 
-Based on [Exif-HEIC.js](https://github.com/exif-heic-js/exif-heic-js) and [Exif.js
-](https://github.com/exif-js/exif-js/blob/master/README.md) with [Bootstrap](https://github.com/twbs/bootstrap).
+## Features
+
+- **Drag and drop** image files onto the page, or click the drop zone to browse and select files — multiple files at once are supported.
+- Supports **JPG/JPEG and HEIC/HEIF** files.
+- Reads EXIF, GPS, and IFD0 metadata via [exifr](https://github.com/MikeKovarik/exifr), and shows a quick summary per image including:
+  - Exposure time and aperture (f-number)
+  - ISO
+  - Focal length, with 35mm-equivalent when available
+  - Camera/device model
+  - Capture date and time
+  - GPS coordinates, with a direct link to view the location on Google Maps
+- Shows an embedded **thumbnail preview** for each photo, when one is available.
+- Gracefully handles photos with **missing or partial EXIF data**, showing "No EXIF data found" instead of erroring out.
+- **Expandable details panel**: click an image's row to slide down a full table of *all* metadata found in the file — a deep parse covering EXIF, GPS, XMP, IPTC, and ICC tags. Click the row again to slide it back up.
+  - Large arrays and binary data (e.g. ICC color profile curves) are summarized rather than dumped in full, keeping the table readable.
+  - All displayed values are HTML-escaped, so metadata containing special characters renders safely.
+- **Keyboard accessible** — the drop zone and each image row can be activated with Enter/Space.
+- Clean, **dark-themed** interface.
+
+## Tech
+
+- Vanilla JavaScript, no build step or framework
+- [exifr](https://github.com/MikeKovarik/exifr) for EXIF/GPS/XMP/IPTC/ICC parsing, loaded via CDN
 
 -------
 
